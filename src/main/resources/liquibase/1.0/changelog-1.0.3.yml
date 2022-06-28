@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-cards-table
+      author: Taleh Bakhshizada
+      changes:
+        - createTable:
+            tableName: cards
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: number
+                  type: varchar(16)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: cvv
+                  type: varchar(3)
+                  constraints:
+                    nullable: false

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+</head>
+<body>
+
+<th:block th:include="header"></th:block>
+
+<h2>Registration Form</h2>
+
+<form th:action="@{/users/registration}" method="POST" th:object="${user}"> <!--user fronta gonderdiyimiz bos model obyektidir. -->
+    <label>
+        Login: <input type="text" th:field="${user.login}" />
+    </label>
+    <label th:if="${#fields.hasErrors('login')}" th:errors="${user.login} "class="validation-message" ></label> <!-- eger login fieldinin erroru varsa, user.login -nin errorlarini bize goster dedik -->
+    <br/>
+    <label>
+        Email: <input type="text" th:field="${user.email}" />
+    </label>
+    <label th:if="${#fields.hasErrors('email')}" th:errors="${user.email}"class="validation-message" ></label>
+    <br/>
+    <label>
+        Password: <input type="password" th:field="${user.password}" />
+    </label>
+    <label th:if="${#fields.hasErrors('password')}" th:errors="${user.password}"class="validation-message" ></label>
+    <br/>
+    <label>
+        First name: <input type="text" th:field="${user.firstName}" />
+    </label>
+    <label th:if="${#fields.hasErrors('firstName')}" th:errors="${user.firstName}"class="validation-message" ></label>
+    <br/>
+    <label>
+        Last name: <input type="text" th:field="${user.lastName}" />
+    </label>
+    <label th:if="${#fields.hasErrors('lastName')}" th:errors="${user.lastName}"class="validation-message" ></label>
+
+    <button type="submit" >Register</button>
+
+</form>
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.company.goodreads.service.BucketServiceTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-06-28T18:37:09" hostname="DESKTOP-97LS47F" time="0.869">
+  <properties/>
+  <testcase name="deleteBookFromBucketSuccess()" classname="com.company.goodreads.service.BucketServiceTest" time="0.861"/>
+  <testcase name="deleteBookFromBucketUserRepositoryException()" classname="com.company.goodreads.service.BucketServiceTest" time="0.007"/>
+  <system-out><![CDATA[BeforeEach setUp method
+BeforeEach setUp method
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

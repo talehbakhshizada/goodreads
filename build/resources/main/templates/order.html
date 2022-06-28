@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<th:block th:include="header"></th:block>
+
+<form th:action="@{/orders}" method="post" th:object="${order}">
+    <label>
+        Description
+        <textarea th:field="${order.description}"></textarea>
+    </label>
+    <br/>
+    <label>
+        Total amount
+        <output th:text="${totalAmount}"></output> <!-- usere total amountu gosteririk sadece-->
+    </label>
+    <br/>
+
+    <label>
+        Card
+        <select name="cardNumber">  <!-- cardlarin siyahisini gosterir.-->
+            <option value="0">Select card</option> <!-- option siyahida gosterilenlerdir.-->
+            <option th:each="card: ${cards}" th:value="${card.number}" th:text="${card.number}"
+                    name="cardNumber"></option>
+        </select>
+    </label>
+    <br/>
+    <a th:href="@{/cards/new}"> Add new card</a>
+
+    <button type="submit">Create</button>
+</form>
+</body>
+</html>
