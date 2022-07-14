@@ -29,11 +29,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter { // bu clas
                 .passwordEncoder(bCryptPasswordEncoder); // bu configure-a bir UserDetailService birde passvordencoder gonderirik
     }
 
+    @Override
     protected void configure(HttpSecurity security) throws Exception {
         security.
                 authorizeRequests()
                 .antMatchers("/books/**","/users/login","/users/registration").permitAll()//books url-e her kes muraciet ede biler. ROle-dan asili olmayaraq
-                .antMatchers("\"/buckets/**\", \"/orders/**\", \"/cards/**\"").hasAuthority("USER") // USER rolu olanlar gore biler ancaq
+                .antMatchers("/buckets/**", "/orders/**", "/cards/**").hasAuthority("USER") // USER rolu olanlar gore biler ancaq
                 .antMatchers("/admin/**").hasAuthority("ADMIN")  // Ancaq ADMIN userler gore biler
                 .anyRequest().authenticated().and() // yuxaridakalara esasen tenzimle deyirik springsecuritye
                 .formLogin() // login hissesinin nece bas vermesi burdan baslayir.
@@ -46,8 +47,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter { // bu clas
                 .logoutRequestMatcher(new AntPathRequestMatcher("/users/logout"))// logout hansi url-e sorgu gonderende bash versin
                 .logoutSuccessUrl("/users/login") // logout olannan sonra hansi sehife achilsin
                 .and().exceptionHandling().accessDeniedPage("/users/access-denied"); // role a uygun olmayan sorgu gelse bu sehifeye yonlendir
-    }
+             //   .and();
+             //   .csrf().disable();
 
+    }
+    @Override
     public void configure(WebSecurity security) { //spring securitye deyirik ki hansi hisseleri seciruty yoxlanisdan kecirme
         security.ignoring()
                 .antMatchers("/static/**", "/images/**");
